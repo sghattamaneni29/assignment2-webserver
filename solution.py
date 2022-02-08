@@ -12,7 +12,7 @@ def webServer(port=13331):
     serverSocket = socket(AF_INET, SOCK_STREAM)
     # Prepare a server socket
     serverSocket.bind(('', port))
-    serverSocket.listen(2)
+    serverSocket.listen(3)
 
     while True:
         # Establish the connection
@@ -37,7 +37,7 @@ def webServer(port=13331):
         except IOError:
             # Send HTTP response message for file not found
             connectionSocket.send('HTTP/1.1 404 Not Found\r\n\r\n'.encode())
-            connectionSocket.send('<html><head></head><body><h1>404 Resource Not Found</h1></body></html>\r\n'.encode())
+            connectionSocket.send('<html><head></head><body><h1>404 Not Found</h1></body></html>\r\n'.encode())
             # Close the client connection socket
             connectionSocket.close()
 
